@@ -18,7 +18,11 @@ export default class {
         this.wrapper.append(result.dom);
         form.submit = event => {
             event.preventDefault();
-            result.content = form.dom.elements.num.value.split('').join(' ');
+            if (form.isValid) {
+                result.content = form.dom.elements.num.value.split('').join(' ');
+            } else {
+                result.content = 'инвалид валуе';
+            }
         }
     }
 }
