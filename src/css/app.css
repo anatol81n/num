@@ -80,3 +80,7 @@ button {
 .result {
     font-size: large;
 }
+
+.tagcloud--item {
+    font-size: x-large;
+}

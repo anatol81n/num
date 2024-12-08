@@ -10,6 +10,7 @@
   "dependencies": {
     "card-validator": "^10.0.0",
     "makel-dom": "^1.1.0",
-    "maska": "^3.0.3"
+    "maska": "^3.0.3",
+    "TagCloud": "^2.5.0"
   }
 }

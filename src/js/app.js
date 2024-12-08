@@ -1,6 +1,7 @@
 import Form from "./form";
 import Result from "./result";
 import {MaskInput} from "maska";
+import TagCloud from 'TagCloud';
 
 export default class {
     constructor(wrapper) {
@@ -18,11 +19,11 @@ export default class {
         this.wrapper.append(result.dom);
         form.submit = event => {
             event.preventDefault();
-            if (form.isValid) {
-                result.content = form.dom.elements.num.value.split('').join(' ');
-            } else {
-                result.content = 'инвалид валуе';
-            }
+            result.content = '';
+            TagCloud(result.dom,form.dom.elements.num.value.split(''), {
+                radius: 120,
+                initSpeed: "fast",
+            });
         }
     }
 }
@@ -30,7 +31,7 @@ export default class {
 const numEventHandlers = form => ({
     "blur": event => {
         const input = event.target;
-        if (input.value.length === 4) {
+        if (input.value.length > 1) {
             form.setValidInput(input.name);
             validate(form);
         } else {
@@ -46,7 +47,7 @@ const numEventHandlers = form => ({
 
 const setInputMasks = form => {
     new MaskInput(form.elements.num, {
-        mask: () => "#".repeat(4),
+        mask: () => "#".repeat(9),
     });
 }
 
